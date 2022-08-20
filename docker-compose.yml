@@ -1,0 +1,15 @@
+version: '3.2'
+
+services:
+  mongo:
+    image: mongo:4.2.12
+    container_name: appscale-relay-api-mongodb
+    restart: always
+    ports:
+      - 27011:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: relaydb
+    volumes:
+      - ./mongo-entrypoint:/docker-entrypoint-initdb.d
